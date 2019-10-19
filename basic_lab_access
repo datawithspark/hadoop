@@ -19,4 +19,4 @@ CREATE TABLE `learnuser` (
 mysql> insert into learnuser values select * from user;
 ==>putty
 ==>winscp or filezilla for copying files from local to hdfs edge node
-==>
+==>hostname: e.cloudxlab.com
