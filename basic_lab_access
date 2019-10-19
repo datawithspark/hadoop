@@ -1,0 +1,22 @@
+https://cloudxlab.com/my-lab
+then Amabari for cluster manager and service manager
+then Hue for query and hdfs file browse and oozie workflow management
+webconsole for project related operations using linux terminal
+mysql login with available credentials
+mysql -h cxln2.c.thelab-240901.internal -u sqoopuser 
+show databases;
+use ;
+shoq tables; or create tables.
+CREATE TABLE `learnuser` (
+  `user_id` int(11) NOT NULL,
+  `name` char(32) NOT NULL,
+  `age` int(11) DEFAULT NULL,
+  `country` varchar(32) DEFAULT NULL,
+  `gender` char(1) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+mysql> insert into learnuser values select * from user;
+==>putty
+==>winscp or filezilla for copying files from local to hdfs edge node
+==>
