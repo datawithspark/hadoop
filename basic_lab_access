@@ -1,0 +1,63 @@
+https://cloudxlab.com/my-lab
+then Amabari for cluster manager and service manager
+then Hue for query and hdfs file browse and oozie workflow management
+webconsole for project related operations using linux terminal
+mysql login with available credentials
+mysql -h cxln2.c.thelab-240901.internal -u sqoopuser 
+show databases;
+use ;
+shoq tables; or create tables.
+CREATE TABLE `learnuser` (
+  `user_id` int(11) NOT NULL,
+  `name` char(32) NOT NULL,
+  `age` int(11) DEFAULT NULL,
+  `country` varchar(32) DEFAULT NULL,
+  `gender` char(1) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+mysql> insert into learnuser values select * from user;
+==>putty
+==>winscp or filezilla for copying files from local to hdfs edge node
+==>hostname: e.cloudxlab.com
+==>example: sqoop import --connect jdbc:mysql://localhost:3306/databasename --username mysqlusername --password mysqlpassword --table employees --target-dir /databasesqoop/sqoop/
+===>
+sqoop import --connect jdbc:mysql://cxln2.c.thelab-240901.internal/sqoopex --username sqoopuser --password  --
+table learnuser --target-dir /user/datawithspark6694/learn2019
+==>hive
+to get into hive give "hive"
+then show databases;
+CREATE DATABASE learn2019;
+use learn2019;
+
+CREATE EXTERNAL TABLE IF NOT EXISTS employee ( eid int, name String,
+salary String, destination String)
+COMMENT 'Employee details'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE
+LOCATION '/user/datawithspark6694/employee';
+
+==>employee.txt create in local and move it to hdfs.
+
+1201  Gopal       45000    Technical manager
+1202  Manisha     45000    Proof reader
+1203  Masthanvali 40000    Technical writer
+1204  Kiran       40000    Hr Admin
+1205  Kranthi     30000    Op Admin
+
+==>LOAD DATA INPATH '/user/datawithspark6694/employee.txt' OVERWRITE INTO TABLE employee;
+==> this one below for local data file LOAD DATA LOCAL INPATH '/user/datawithspark6694/employee.txt' OVERWRITE INTO TABLE employee;
+==>
+-+
+header of sqoop table that is learnuser => |user_id | name | age  | country | gender 
+CREATE EXTERNAL TABLE IF NOT EXISTS learnuser ( user_id int, name String,
+age int, country String, gender String)
+COMMENT 'User details'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE
+LOCATION '/user/datawithspark6694/learn2019';
+===>
